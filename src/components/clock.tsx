@@ -11,7 +11,7 @@ export function Clock() {
   return (
     <ClockWrapper>
       <span className="grayed">{time.toLocaleDateString("hu-Hu")}</span>{" "}
-      {time.toLocaleTimeString()}
+      {time.toLocaleTimeString("hu-Hu")}
     </ClockWrapper>
   );
 }
