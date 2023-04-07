@@ -1,8 +1,8 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
 const DEFAULT_COORDINATES: Coordinates = {
-  lat: 47.473443,
-  lon: 19.052844,
+  lat: process.env.REACT_APP_DEFAULT_LAT ?? 47.473443,
+  lon: process.env.REACT_APP_DEFAULT_LON ?? 19.052844,
 };
 
 const LocalStorageKeys = {
