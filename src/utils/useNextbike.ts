@@ -40,7 +40,7 @@ export function useNextbike() {
   };
 
   useEffect(update, [getLocation, radius]);
-  useInterval(update, 10000);
+  useInterval(update, 30000);
 
   return { nearest, loading, error, update };
 }

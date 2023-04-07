@@ -37,7 +37,7 @@ export function useDepartures() {
   };
 
   useEffect(update, [getLocation, radius]);
-  useInterval(update, 10000);
+  useInterval(update, 30000);
 
   return { departures, loading, error, update };
 }
