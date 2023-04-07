@@ -2,20 +2,25 @@ import { useEffect, useState } from "react";
 import { useSettingsContext } from "./settings-context";
 import { useInterval } from "./useInterval";
 
-const url =
-  "https://maps.nextbike.net/maps/nextbike-live.json?city=699&domains=bh";
-
 export function useNextbike() {
   const [nearest, setNearest] = useState<NextBikePlace>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();
   const { getLocation, radius } = useSettingsContext();
+
   const update = () => {
     setLoading(true);
     getLocation()
       .then((coords) => {
+        // bikes  enum:〔 0, false 〕- if falsy, omit bike nodes from the response
+        // distance integer - filter radius [meters], only considered when (lat, lng) are provided
+        // lat number - latitude of center point
+        // lng number - longitude of center point
+        const url = "https://maps.nextbike.net/maps/nextbike-live.json?"
+            + `city=699&domains=bh&lat=${coords.lat}&lng=${coords.lon}&distance=${radius}&bikes=false`;
+
         // Axios had issues with cors
-        getBubiDataFromApi()
+        getBubiDataFromApi(url)
           .then((res) => {
             let places = res.countries[0].cities[0].places;
             setNearest(
@@ -45,7 +50,7 @@ export function useNextbike() {
   return { nearest, loading, error, update };
 }
 
-function getBubiDataFromApi() {
+function getBubiDataFromApi(url : string) {
   return new Promise((resolve: (values: NextBikeApi) => void, reject) => {
     fetch(url)
       .then(async (response) => {
