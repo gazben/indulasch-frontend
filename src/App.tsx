@@ -7,8 +7,8 @@ import { Departures } from "./components/departures";
 import { Settings } from "./components/settings";
 import { Footer } from "./components/footer";
 import { BubiWidget } from "./components/widgets/bubiWidget";
-import { WeatherWidget } from "./components/widgets/weatherWidget";
-import { SchPincerWidget } from "./components/widgets/schPincerWidget";
+// import { WeatherWidget } from "./components/widgets/weatherWidget";
+// import { SchPincerWidget } from "./components/widgets/schPincerWidget";
 import { Messages } from "./components/messages";
 
 function App() {
@@ -59,8 +59,8 @@ function App() {
         </DepartureAndMessagesContainer>
         <WidgetArea ref={widgetRef}>
           <BubiWidget />
-          <WeatherWidget />
-          <SchPincerWidget />
+          {/* <WeatherWidget />
+           <SchPincerWidget /> */}
         </WidgetArea>
       </ContentContainer>
       <Footer footerRef={footerRef} />
