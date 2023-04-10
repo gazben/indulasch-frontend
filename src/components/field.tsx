@@ -4,8 +4,14 @@ import { Departure } from "../utils/types";
 import { AlertIcon, VehicleIcon } from "./icons";
 
 export function Field({ departure }: { departure: Departure }) {
+    const displayInformation = () => {
+        if (!departure.alert) {
+            return
+        }
+        alert(departure.alert)
+    };
   return (
-    <FieldWrapper>
+    <FieldWrapper onClick={displayInformation}>
       <LineElement>
         <VehicleIcon name={departure.style.vehicleIcon.name} />
         <LineNumber
