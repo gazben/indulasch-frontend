@@ -91,10 +91,6 @@ const DepartureAndMessagesContainer = styled.div<{ height: number }>`
 `;
 
 const ContentContainer = styled.div<{ height: number }>`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 20px;
-  grid-template-rows: 100%;
   width: 90%;
   height: ${({ height }) => `${height}px`};
   margin: 0 auto;
